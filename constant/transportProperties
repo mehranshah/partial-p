@@ -1,0 +1,56 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.0                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phases (water air);//first entry has to correspont to file in 0 -> alpha.water
+
+water
+{
+    transportModel  tempdeppowerLaw;//Newtonian fluid assumed changed newtonian to tempdpl
+    nu              [0 2 -1 0 0 0 0] 15e-03;//kinematic viscosity in m^2/s - water
+    rho             [1 -3 0 0 0 0 0] 1300;//density - water
+tempdeppowerLawCoeffs
+ {
+     k             k [0 2 -1 0 0 0 0] 0.0008;
+     n             n [0 0 0 0 0 0 0] 1;
+     kslope        kslope [0 2 -1 -1 0 0 0] 0.5;
+     Tbase         Tbase [0 0 0 1 0 0 0] 300;
+     nuMin         nuMin [0 2 -1 0 0 0 0] .1;
+     nuMax         nuMax [0 2 -1 0 0 0 0] 10000000;
+    }
+}
+    DT             DT [0 2 -1 0 0 0 0] 0.002e-4;
+air
+{
+    transportModel  tempdeppowerLaw;//changed newtonian to tempdpl
+    nu              [0 2 -1 0 0 0 0] 1.48e-05;//kinematic viscosity in m^2/s - air
+    rho             [1 -3 0 0 0 0 0] 1;//density - air
+tempdeppowerLawCoeffs
+ {
+     k             k [0 2 -1 0 0 0 0] 0.0008;
+     n             n [0 0 0 0 0 0 0] 1;
+     kslope        kslope [0 2 -1 -1 0 0 0] 0.05;
+     Tbase         Tbase [0 0 0 1 0 0 0] 300;
+     nuMin         nuMin [0 2 -1 0 0 0 0] .1;
+     nuMax         nuMax [0 2 -1 0 0 0 0] 10000000;
+    }
+}
+
+sigma           [1 0 -2 0 0 0 0] 0.000072;//surface tension of water/air
+//from here edited and added   
+
+//till here
+// ************************************************************************* //

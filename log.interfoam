@@ -1,0 +1,71 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-fa1285188035
+Exec   : interFoam
+Date   : Oct 07 2019
+Time   : 14:24:18
+Host   : "Amiga"
+PID    : 8173
+I/O    : uncollated
+Case   : /home/mehranshahzadeh/Desktop/mltfaprs/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Selecting dynamicFvMesh staticFvMesh
+
+PIMPLE: No convergence criteria found
+
+
+PIMPLE: Operating solver in PISO mode
+
+Reading field p_rgh
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Reading transportProperties
+
+Selecting incompressible transport model Newtonian
+Selecting incompressible transport model Newtonian
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+
+Reading g
+
+Reading hRef
+Calculating field g.h
+
+No MRF models present
+
+Creating finite volume options from "constant/fvOptions"
+
+Selecting finite volume options model type explicitPorositySource
+    Source: porosity1
+    - selecting cells using cellSet por
+    - selected 1875 cell(s) with volume 3e-05
+Porosity region porosity1:
+    selecting model: DarcyForchheimer
+    creating porous zone: por
+
+
+--> FOAM FATAL ERROR: 
+cannot find porous cellZone por
+
+    From function Foam::porosityModel::porosityModel(const Foam::word&, const Foam::word&, const Foam::fvMesh&, const Foam::dictionary&, const Foam::word&)
+    in file cfdTools/general/porosityModel/porosityModel/porosityModel.C at line 121.
+
+FOAM exiting
+
